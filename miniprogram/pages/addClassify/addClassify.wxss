@@ -1,1 +1,26 @@
-/* miniprogram/pages/addClassify/addClassify.wxss */
+.container{
+  background-color: rgba(211, 210, 210, 0.301);
+}
+.container .language{
+  width: 748rpx;
+  height: 620rpx;
+  z-index: -1;
+}
+.classify-name{
+  width: 520rpx;
+  font-size: 40rpx;
+  margin: 150rpx 0 20rpx;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.classify-input{
+  width: 520rpx;
+  height: 35rpx;
+  border: 2rpx solid #727272a2;
+  border-radius: 30rpx;
+  margin-bottom: 50rpx;
+  padding: 20rpx;
+}
+.container .confirm-btn{
+  width: 550rpx;
+  border-radius: 30rpx;
+}

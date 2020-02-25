@@ -2,8 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/addClassify/addClassify",
-    "pages/addWord/addWord",
     "pages/classify/classify",
+    "pages/addWord/addWord",
     "pages/wordList/wordList",
     "pages/wordDetail/wordDetail"
   ],

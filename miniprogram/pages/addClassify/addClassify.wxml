@@ -1,2 +1,6 @@
-<!--miniprogram/pages/addClassify/addClassify.wxml-->
-<text>miniprogram/pages/addClassify/addClassify.wxml</text>
+<view class="container">
+  <image class="language" src="/images/add-img.jpg"></image>
+  <view class="classify-name">分类名称:</view>
+  <input class="classify-input" placeholder="请输入分类名称" bindinput="handleInput" value="{{ value }}"></input>
+  <button class="confirm-btn" type="primary" bindtap="handleSubmit">确定</button>
+</view>
