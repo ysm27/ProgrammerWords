@@ -1,2 +1,15 @@
-<!--miniprogram/pages/wordDetail/wordDetail.wxml-->
-<text>miniprogram/pages/wordDetail/wordDetail.wxml</text>
+<view class="container">
+  <view class="word-info">
+    <view class="word-name">{{ word.name }}</view>
+    <view class="item">发音：<view class="word-pronunciation">{{ word.pronunciation }}</view></view>
+    <view class="item">翻译：<view class="word-translation">{{ word.translation }}</view></view>
+    <view class="item">描述：<view class="word-description">{{ word.description }}</view></view>  
+  </view> 
+  <view class="word-record">
+    <view class="record" bindlongtap="startRecord" bindtouchmove="{{ handleTouchMove }}" bindtouchend="stopRecord">
+      <image class="record-img" src="{{ record.iconPath }}"></image>
+      <view class="record-text">{{ record.text }}</view>
+    </view>
+
+  </view>
+</view>

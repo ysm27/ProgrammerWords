@@ -6,30 +6,30 @@
   box-sizing: border-box;
   background-color: #fff;
 }
-.add-classify{
+.add-btn{
   width: 80rpx;
   height: 80rpx;
-  background-color: #a8aaaac5;
+  border: 6rpx solid #5e5f5fc5;
   border-radius: 50%;
   position: relative;
 }
-.add-classify::before{
+.add-btn::before{
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 4rpx;
+  width: 6rpx;
   height: 50%;
   background-color: #5e5f5fc5;
 }
-.add-classify::after{
+.add-btn::after{
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   width: 50%;
-  height: 4rpx;
+  height: 6rpx;
   background-color: #5e5f5fc5;
 }

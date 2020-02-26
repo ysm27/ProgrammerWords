@@ -1,1 +1,34 @@
-/* miniprogram/pages/wordList/wordList.wxss */
+.container{
+  height: 100%;
+}
+.word-list{
+  margin-top: 50rpx;
+}
+.word-item{
+  margin-bottom: 10rpx;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40rpx;
+  text-align: center;
+  border: 2rpx solid #F6F6F6;
+  background-color: rgba(228, 228, 228, 0.932);
+  width: 700rpx;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-btn{
+  margin-top: 20rpx;
+  margin-left: 500rpx;
+}
+.item-back{
+  font-family: cursive;
+  font-size: 30rpx;
+}
+.word-detail{
+  font-size: 26rpx;
+  text-align: right;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  color: rgb(33, 97, 235);
+}

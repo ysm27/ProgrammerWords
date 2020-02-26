@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/addClassify/addClassify",
     "pages/classify/classify",
-    "pages/addWord/addWord",
     "pages/wordList/wordList",
+    "pages/addWord/addWord",
+    "pages/addClassify/addClassify",
     "pages/wordDetail/wordDetail"
   ],
   "window": {

@@ -1,3 +1,6 @@
 <view class="container">
-  <view class="add-classify" bindtap="handleAdd"></view>
+  <view class="classify-list">
+    <navigator class="classify-item" wx:for="{{ classify }}" wx:key="{{ item._id }}" url="/pages/wordList/wordList?id={{ item._id }}">{{ item.value }}</navigator>
+  </view>
+  <view class="add-btn" bindtap="handleAdd"></view>
 </view>

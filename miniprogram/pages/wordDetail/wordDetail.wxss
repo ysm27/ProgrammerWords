@@ -1,1 +1,25 @@
-/* miniprogram/pages/wordDetail/wordDetail.wxss */
+.container{
+  background-color: rgba(211, 210, 210, 0.301);
+}
+.word-info{
+  margin-top: 150rpx;
+}
+.word-name{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 60rpx;
+  margin-bottom: 26rpx;
+}
+.item{
+  display: flex;
+  font-family: cursive;
+  font-size: 40rpx;
+  margin-bottom: 16rpx;
+}
+.record{
+  margin-top: 200rpx;
+  text-align: center;
+}
+.record-img{
+  width: 240rpx;
+  height: 240rpx;
+}

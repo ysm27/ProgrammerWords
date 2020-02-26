@@ -1,66 +1,59 @@
-// miniprogram/pages/wordList/wordList.js
+const db = wx.cloud.database()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    classifyId: '',
+    words: [],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-   
+    let classifyId = options.id
+    this.setData({ classifyId })
+    this.getWords()
+    this.getClassifyName()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getClassifyName: function() {
+    let classifyId = this.data.classifyId
+    db.collection('classify').where({
+      _id: classifyId
+    }).get({
+      success: (res) => {
+        let classifyName = res.data[0].value
+        wx.setNavigationBarTitle({
+          title: classifyName,
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getWords: function() {
+    let classifyId = this.data.classifyId
+    db.collection('words').where({
+      classifyId: classifyId
+    }).get({
+      success: (res) => {
+        let words = res.data
+        words.forEach(data => {
+          data.change = 'front'
+        })
+        this.setData({ words })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  handleChange: function(e) {
+    let index = e.currentTarget.dataset.index
+    let words = this.data.words
+    words[index].change = 'end'
+    this.setData({ words })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  handleBackFront: function(e) {
+    let index = e.currentTarget.dataset.index
+    let words = this.data.words
+    words[index].change = 'front'
+    this.setData({ words })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handleAdd: function() {
+    let classifyId = this.data.classifyId
+    wx.navigateTo({
+      url: '/pages/addWord/addWord?classifyId=' + classifyId,
+    })
   }
 })

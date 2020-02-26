@@ -1,1 +1,32 @@
-/* miniprogram/pages/addWord/addWord.wxss */
+.container{
+  background-color: rgba(211, 210, 210, 0.301);
+}
+.word-name{
+  width: 520rpx;
+  font-size: 40rpx;
+  margin: 150rpx 0 20rpx;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.word-input{
+  width: 520rpx;
+  height: 35rpx;
+  border: 2rpx solid #727272a2;
+  border-radius: 30rpx;
+  margin-bottom: 80rpx;
+  padding: 20rpx;
+}
+.word-detail{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.word-desc{
+  border: 2rpx solid #727272a2;
+  border-radius: 15rpx;
+  padding: 10rpx;
+}
+.container .confirm-btn{
+  width: 550rpx;
+  border-radius: 30rpx;
+  margin-top: 80rpx;
+}

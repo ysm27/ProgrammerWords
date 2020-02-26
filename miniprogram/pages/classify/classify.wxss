@@ -1,1 +1,19 @@
-/* miniprogram/pages/classify/classify.wxss */
+.container{
+  height: 100%;
+}
+.classify-list{
+  margin-top: 50rpx;
+}
+.classify-item{
+  margin-bottom: 10rpx;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40rpx;
+  text-align: center;
+  border: 2rpx solid #F6F6F6;
+  padding: 26rpx 100rpx ;
+  background-color: rgba(228, 228, 228, 0.932);
+}
+.add-btn{
+  margin-top: 20rpx;
+  margin-left: 500rpx;
+}

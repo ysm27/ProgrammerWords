@@ -9,7 +9,7 @@
 .classify-name{
   width: 520rpx;
   font-size: 40rpx;
-  margin: 150rpx 0 20rpx;
+  margin: 80rpx 0 20rpx;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .classify-input{

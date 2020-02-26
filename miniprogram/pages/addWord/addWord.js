@@ -1,68 +1,64 @@
-// miniprogram/pages/addWord/addWord.js
+const db = wx.cloud.database()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    name: '',
+    pronunciation: '',
+    translation: '',
+    description: '',
+    classifyId: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '添加单词'
     })
+    let classifyId = options.classifyId
+    this.setData({ classifyId })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handleName: function(e) {
+    let name = e.detail.value.trim()
+    this.setData({ name })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handlePronun: function(e) {
+    let pronunciation = e.detail.value.trim()
+    this.setData({ pronunciation })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  handleTrans: function(e) {
+    let translation = e.detail.value.trim()
+    this.setData({ translation })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  handleDesc: function(e) {
+    let description = e.detail.value.trim()
+    this.setData({ description })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handleSubmit: function() {
+    let name = this.data.name
+    let pronunciation = this.data.pronunciation
+    let translation = this.data.translation
+    let description = this.data.description
+    let classifyId = this.data.classifyId
+    if(!name || !classifyId) {
+      wx.showToast({
+        title: '请输入单词名称',
+        icon: 'none'
+      })
+      return
+    }
+    db.collection('words').add({
+      data: {
+        name, pronunciation, translation, description, classifyId
+      },
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/wordList/wordList',
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '添加单词失败',
+          icon: 'none'
+        })
+      }
+    })
   }
 })
