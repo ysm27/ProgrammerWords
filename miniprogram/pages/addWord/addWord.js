@@ -50,7 +50,7 @@ Page({
       },
       success: (res) => {
         wx.navigateTo({
-          url: '/pages/wordList/wordList',
+          url: '/pages/wordList/wordList?id=' + classifyId,
         })
       },
       fail: err => {

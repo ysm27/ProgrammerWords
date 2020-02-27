@@ -1,6 +1,6 @@
 <view class="container">
   <view class="classify-list">
-    <navigator class="classify-item" wx:for="{{ classify }}" wx:key="{{ item._id }}" url="/pages/wordList/wordList?id={{ item._id }}">{{ item.value }}</navigator>
+    <navigator class="classify-item" wx:for="{{ classify }}" wx:key="index" url="/pages/wordList/wordList?id={{ item._id }}">{{ item.value }}</navigator>
   </view>
-  <view class="add-btn" bindtap="handleAdd"></view>
+  <mp-icon class="add-btn" bindtap="handleAdd" icon="add2" size="{{45}}"></mp-icon>
 </view>

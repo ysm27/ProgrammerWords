@@ -17,18 +17,20 @@
   align-items: center;
   justify-content: center;
 }
-.add-btn{
-  margin-top: 20rpx;
-  margin-left: 500rpx;
+.word-info{
+  width: 100%;
+  padding: 26rpx;
 }
 .item-back{
   font-family: cursive;
   font-size: 30rpx;
 }
 .word-detail{
-  font-size: 26rpx;
   text-align: right;
   font-size: 24rpx;
-  margin-top: 10rpx;
+  padding-top: 10rpx;
   color: rgb(33, 97, 235);
+}
+.add-btn{
+  margin-top: 20rpx;
 }

@@ -12,7 +12,7 @@
   color: #6d6b6b;
   margin: 12rpx 0 20rpx 0;
 }
-.enter{
+.login-btn{
   width: 350rpx;
   height: 80rpx;
   margin-top: 100rpx;
@@ -23,4 +23,7 @@
   align-items: center;
   justify-content: center;
   background-color: #4d90f3;
+}
+.login-btn_hover{
+  opacity: .8;
 }

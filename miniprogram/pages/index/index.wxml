@@ -4,5 +4,6 @@
     <view class="sub-title">专属于程序员的单词课</view>
   </view>
   <image class="bg-img" src="/images/index-img.jpg"></image>
-  <navigator class="enter" url="/pages/classify/classify">点击进入</navigator>
+  <button class="login-btn" hover-class="login-btn_hover" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点击进入</button>
+  <!-- <navigator class="enter" url="/pages/classify/classify">点击进入</navigator> -->
 </view>

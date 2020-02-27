@@ -5,11 +5,22 @@
     <view class="item">翻译：<view class="word-translation">{{ word.translation }}</view></view>
     <view class="item">描述：<view class="word-description">{{ word.description }}</view></view>  
   </view> 
-  <view class="word-record">
-    <view class="record" bindlongtap="startRecord" bindtouchmove="{{ handleTouchMove }}" bindtouchend="stopRecord">
-      <image class="record-img" src="{{ record.iconPath }}"></image>
-      <view class="record-text">{{ record.text }}</view>
+  <view class="record-container">
+    <view class="pronunciation-list">
+      <view class="pronunciation-item" wx:for="{{ pronunciation }}" wx:key="index">
+        <image class="user-avatar" src="{{ item.userInfo.avatarUrl }}"></image>
+        <view class="user-pronunciation">
+          <image class="play-img" src="/images/play.png" data-index="{{ index }}" bindtap="playVoice"></image>
+        </view>
+        <image wx:if="{{ showDelete }}" class="show-delete" bindtap="handleDelete" data-id="{{ item._id }}" src="/images/delete.png"></image>
+      </view>
     </view>
-
+    <view class="record-icon">
+      <view class="record" bindlongpress="startRecord" bindtouchmove="handleTouchMove" bindtouchend="stopRecord">
+        <image class="record-img" src="{{ record.iconPath }}"></image>
+        <view class="record-text">{{ record.text }}</view>
+      </view>
+    </view>
   </view>
+  
 </view>

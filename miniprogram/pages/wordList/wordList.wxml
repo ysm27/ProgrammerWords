@@ -1,6 +1,6 @@
 <view class="container">
   <view class="word-list">
-    <view class="word-item" wx:for="{{ words }}" wx:key="{{ item._id }}">
+    <view class="word-item" wx:for="{{ words }}" wx:key="index">
       <view class="word-info" wx:if="{{ item.change === 'front' }}"  data-index="{{index}}" bindtap="handleChange">
         <view class="item-name">{{ item.name }}</view>
         <view class="item-pronunciation">{{ item.pronunciation }}</view>
@@ -12,5 +12,5 @@
       </view>
     </view>   
   </view>
-  <view class="add-btn" bindtap="handleAdd"></view>
+  <mp-icon class="add-btn" bindtap="handleAdd" icon="add2" size="{{45}}"></mp-icon>
 </view>
