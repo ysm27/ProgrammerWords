@@ -12,7 +12,7 @@
         <view class="user-pronunciation">
           <image class="play-img" src="/images/play.png" data-index="{{ index }}" bindtap="playVoice"></image>
         </view>
-        <image wx:if="{{ showDelete }}" class="show-delete" bindtap="handleDelete" data-id="{{ item._id }}" src="/images/delete.png"></image>
+        <image wx:if="{{ openid == item._openid }}" class="show-delete" bindtap="handleDelete" data-id="{{ item._id }}" src="/images/delete.png"></image>
       </view>
     </view>
     <view class="record-icon">

@@ -15,8 +15,7 @@ Page({
     sendLock: true, //发送锁，当为true时上锁，false时解锁发送 
     userInfo: {},
     openid: '',
-    pronunciation: [],
-    showDelete: true
+    pronunciation: []
   },
   onLoad: function (options) {
     let wordId = options.id
@@ -71,7 +70,6 @@ Page({
       duration: 10000,
       sampleRate: 16000,
       numberOfChannels: 1,
-      format: 'mp3'
     }
     recorderManager.start(options)
     wx.showToast({
@@ -109,54 +107,45 @@ Page({
     }
     that.setData({ record })
     wx.hideToast()
+    recorderManager.stop()
     recorderManager.onStop((res) => {
       if(!sendLock) {
-         //对录音时长进行判断，少于1s的不进行发送，并做出提示
-        if(res.duration < 2000) {
-          console.log('录音时长太短')
-          wx.showToast({
-            title: '录音时长太短，发送失败',
-            icon: 'none',
-            duration: 1000
-          })
-        }else{
-          // 进行语音发送
-          let userInfo = that.data.userInfo
-          let openid = that.data.openid
-          let wordId = that.data.wordId
-          let tempFilePath  = res.tempFilePath
-          let duration = res.duration
-          let fileSize = res.fileSize
-          wx.showLoading({
-            title: '语音发送中',
-          })
-          db.collection('pronunciation').add({
-            data: {
-              userInfo, openid, wordId, tempFilePath, duration, fileSize
-            },
-            success: res => {
-              let record = {
-                text: '长按录音',
-                iconPath: '/images/record.png'
-              }
-              that.setData({ record })
-              wx.showToast({
-                title: '录音成功',
-                icon: 'success'
-              })
-              that.onShow()
-            },
-            fail: err => {
-              wx.showToast({
-                icon: 'none',
-                title: '录音上传失败'
-              })
-            },
-            complete: () => {
-              wx.hideLoading()
+        // 进行语音发送
+        let userInfo = that.data.userInfo
+        let openid = that.data.openid
+        let wordId = that.data.wordId
+        let tempFilePath  = res.tempFilePath
+        let duration = res.duration
+        let fileSize = res.fileSize
+        wx.showLoading({
+          title: '语音发送中',
+        })
+        db.collection('pronunciation').add({
+          data: {
+            userInfo, openid, wordId, tempFilePath, duration, fileSize
+          },
+          success: res => {
+            let record = {
+              text: '长按录音',
+              iconPath: '/images/record.png'
             }
-          })
-        }
+            that.setData({ record })
+            wx.showToast({
+              title: '录音成功',
+              icon: 'success'
+            })
+            that.onShow()
+          },
+          fail: err => {
+            wx.showToast({
+              icon: 'none',
+              title: '录音上传失败'
+            })
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
       }else{
         wx.showToast({
           title: '取消发送',

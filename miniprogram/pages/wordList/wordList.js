@@ -1,13 +1,17 @@
 const db = wx.cloud.database()
+const innerAudioContext = wx.createInnerAudioContext()
 
 Page({
   data: {
     classifyId: '',
     words: [],
+    develop: true
   },
   onLoad: function (options) {
     let classifyId = options.id
     this.setData({ classifyId })
+  },
+  onShow: function() {
     this.getWords()
     this.getClassifyName()
   },
@@ -40,12 +44,27 @@ Page({
       }
     })
   },
-  // 单击单词，使其翻转背面显示其他信息
+  // 单击单词，使其翻转背面显示其他信息，同时发音
   handleChange: function(e) {
     let index = e.currentTarget.dataset.index
     let words = this.data.words
     words[index].change = 'end'
     this.setData({ words })
+    let wordId = e.currentTarget.dataset.id
+    this.playVoice(wordId)
+  },
+   // 播放录音
+   playVoice: function(wordId) {
+    db.collection('pronunciation').where({
+      wordId: wordId
+    }).get({
+      success: (res) => {
+        let pronunciation = res.data
+        let filePath = pronunciation[0].tempFilePath
+        innerAudioContext.src = filePath
+        innerAudioContext.play()
+      }
+    })
   },
   // 再单击单词，使其翻转至正面
   handleBackFront: function(e) {

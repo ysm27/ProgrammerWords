@@ -2,11 +2,12 @@ const db = wx.cloud.database()
 
 Page({
   data: {
-    classify: []
+    classify: [],
+    develop: true
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '程序员单词课'
+      title: '程序员单词本'
     })
     this.getClassify()
   },

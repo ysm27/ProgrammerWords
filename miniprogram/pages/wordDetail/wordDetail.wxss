@@ -1,5 +1,4 @@
 .container{
-  height: 100%;
   background-color: rgba(211, 210, 210, 0.301);
 }
 .word-info{
