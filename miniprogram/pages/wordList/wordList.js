@@ -60,8 +60,8 @@ Page({
     }).get({
       success: (res) => {
         let pronunciation = res.data
-        let filePath = pronunciation[0].tempFilePath
-        innerAudioContext.src = filePath
+        let recordId = pronunciation[0].recordId
+        innerAudioContext.src = recordId
         innerAudioContext.play()
       }
     })

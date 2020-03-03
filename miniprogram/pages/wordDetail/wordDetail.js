@@ -15,17 +15,41 @@ Page({
     sendLock: true, //发送锁，当为true时上锁，false时解锁发送 
     userInfo: {},
     openid: '',
-    pronunciation: []
+    pronunciation: [],
+    userInfo: '',
+    recordId: ''
   },
   onLoad: function (options) {
     let wordId = options.id
-    let userInfo = App.globalData.userInfo
-    let openid = App.globalData.openid
-    this.setData({ wordId, userInfo, openid })
+    this.setData({ wordId })
   },
   onShow: function() {
     this.getWord()
     this.getPronunciation()
+    this.getUserInfo()
+  },
+  getUserInfo: function() {
+    let userInfo = App.globalData.userInfo
+    let openid = App.globalData.openid
+    if(userInfo.nickName && openid) {
+      this.setData({
+        userInfo,
+        openid
+      })
+    }
+  },
+  onGetUserInfo: function(e) {
+    let that = this
+    if (e.detail.userInfo) {
+      let userInfo = e.detail.userInfo;
+      App.globalData.userInfo = userInfo
+      App.getUserInfo((res)=>{
+        this.setData({
+          userInfo: res.userInfo
+        })
+      })
+      that.onShow()
+    }
   },
   // 获取单词信息
   getWord: function() {
@@ -97,6 +121,24 @@ Page({
       this.setData({ sendLock: false })
     }
   },
+  // 上传文件
+  uploadFile: function(filePath) {
+    return new Promise(function(resolve, reject) {
+      let openid = App.globalData.openid;
+      let timestamp = Date.now();
+      let postfix = filePath.match(/\.[^.]+?$/)[0];
+      let cloudPath = `${openid}_${timestamp}_${postfix}`;
+      wx.cloud.uploadFile({
+        cloudPath,
+        filePath,
+        success: res => {
+          let recordId = res.fileID
+          resolve(recordId)
+        }
+      })
+    })
+    
+  },
   // 松开发送
   stopRecord: function() {  
     let that = this
@@ -115,37 +157,42 @@ Page({
         let openid = that.data.openid
         let wordId = that.data.wordId
         let tempFilePath  = res.tempFilePath
-        let duration = res.duration
-        let fileSize = res.fileSize
-        wx.showLoading({
-          title: '语音发送中',
-        })
-        db.collection('pronunciation').add({
-          data: {
-            userInfo, openid, wordId, tempFilePath, duration, fileSize
-          },
-          success: res => {
-            let record = {
-              text: '长按录音',
-              iconPath: '/images/record.png'
+        // 把地址上传到云开发的存储管理内
+        that.uploadFile(tempFilePath).then((res) => {
+          let recordId = res
+          let duration = res.duration
+          let fileSize = res.fileSize
+          wx.showLoading({
+            title: '语音发送中',
+          })
+          db.collection('pronunciation').add({
+            data: {
+              userInfo, openid, wordId, recordId, duration, fileSize
+            },
+            success: res => {
+              let record = {
+                text: '长按录音',
+                iconPath: '/images/record.png'
+              }
+              that.setData({ record })
+              wx.showToast({
+                title: '录音成功',
+                icon: 'success'
+              })
+            },
+            fail: err => {
+              wx.showToast({
+                icon: 'none',
+                title: '录音上传失败'
+              })
+            },
+            complete: () => {
+              wx.hideLoading()
+              that.onShow()
             }
-            that.setData({ record })
-            wx.showToast({
-              title: '录音成功',
-              icon: 'success'
-            })
-            that.onShow()
-          },
-          fail: err => {
-            wx.showToast({
-              icon: 'none',
-              title: '录音上传失败'
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
+          })
         })
+        
       }else{
         wx.showToast({
           title: '取消发送',
@@ -158,8 +205,8 @@ Page({
   playVoice: function(e) {
     let index = e.currentTarget.dataset.index
     let pronunciation = this.data.pronunciation
-    let filePath = pronunciation[index].tempFilePath
-    innerAudioContext.src = filePath
+    let recordId = pronunciation[index].recordId
+    innerAudioContext.src = recordId
     innerAudioContext.play()
   },
   // 删除录音

@@ -9,17 +9,21 @@
     <view class="pronunciation-list">
       <view class="pronunciation-item" wx:for="{{ pronunciation }}" wx:key="index">
         <image class="user-avatar" src="{{ item.userInfo.avatarUrl }}"></image>
-        <view class="user-pronunciation">
-          <image class="play-img" src="/images/play.png" data-index="{{ index }}" bindtap="playVoice"></image>
+        <view class="user-pronunciation" data-index="{{ index }}" bindtap="playVoice">
+          <image class="play-img" src="/images/play.png"></image>
+          <image class="delta" src="/images/delta.png"></image>
         </view>
         <image wx:if="{{ openid == item._openid }}" class="show-delete" bindtap="handleDelete" data-id="{{ item._id }}" src="/images/delete.png"></image>
       </view>
     </view>
     <view class="record-icon">
-      <view class="record" bindlongpress="startRecord" bindtouchmove="handleTouchMove" bindtouchend="stopRecord">
-        <image class="record-img" src="{{ record.iconPath }}"></image>
+    <!-- 授权登录 -->
+     <button class="login-btn" hover-class="btn-hover-color" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!userInfo.nickName}}">授权登录使用录音</button>
+      <button class="record" wx:if="{{userInfo.nickName}}" bindlongpress="startRecord" bindtouchmove="handleTouchMove" open-type="getUserInfo" bindtouchend="stopRecord">
+        <image class="record-img" src="{{ record.iconPath }}">
+        </image>
         <view class="record-text">{{ record.text }}</view>
-      </view>
+      </button>
     </view>
   </view>
   

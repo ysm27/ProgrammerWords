@@ -18,7 +18,7 @@
 }
 .bg-color{
   color: #fff;
-  background-color: rgb(72, 126, 241);
+  background-color: rgb(95, 141, 240);
   font-size: 26rpx;
 }
 .item-back{

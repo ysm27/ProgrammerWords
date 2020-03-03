@@ -10,7 +10,7 @@
 .word-input{
   width: 520rpx;
   height: 35rpx;
-  border: 2rpx solid #727272a2;
+  border: 2rpx solid #727272;
   border-radius: 30rpx;
   margin-bottom: 80rpx;
   padding: 20rpx;
@@ -21,7 +21,7 @@
   margin-bottom: 30rpx;
 }
 .word-desc{
-  border: 2rpx solid #727272a2;
+  border: 2rpx solid #727272;
   border-radius: 15rpx;
   padding: 10rpx;
 }

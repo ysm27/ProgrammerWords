@@ -1,4 +1,3 @@
-//app.js
 App({
   onLaunch: function () {
     // 云开发环境初始化
@@ -6,6 +5,7 @@ App({
       env: "programmer-words-buq4u",
       traceUser: true
     })
+    this.getUserInfo()
   },
   getUserInfo: function(cb) {
     wx.getSetting({
@@ -30,7 +30,7 @@ App({
       data: {},
       success: (res) => {
         this.globalData.openid = res.result.openid
-        typeof cb === 'function' && cb(res);
+        typeof cb === 'function' && cb(res)
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
