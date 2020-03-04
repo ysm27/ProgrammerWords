@@ -38,6 +38,7 @@ Page({
       })
     }
   },
+  // 获取用户信息
   onGetUserInfo: function(e) {
     let that = this
     if (e.detail.userInfo) {
@@ -47,6 +48,16 @@ Page({
         this.setData({
           userInfo: res.userInfo
         })
+      })
+      // 授权录音功能
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting['scope.record']) {
+            wx.authorize({
+              scope: 'scope.record'
+            })
+          }
+        }
       })
       that.onShow()
     }

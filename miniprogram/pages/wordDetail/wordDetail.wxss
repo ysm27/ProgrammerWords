@@ -16,6 +16,8 @@
 }
 .word-description{
   width: 550rpx;
+  height: 200rpx;
+  overflow: scroll;
 }
 .record-container{
   width: 100%;
@@ -26,6 +28,7 @@
   height: 420rpx;
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
 }
 .pronunciation-item{
   width: 220rpx;

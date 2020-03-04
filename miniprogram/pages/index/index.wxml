@@ -1,7 +1,7 @@
 <view class="container">
   <view class="title">
     <view class="main-title">程序员单词</view>
-    <view class="sub-title">专属于程序员的单词课</view>
+    <view class="sub-title">专属于程序员的单词本</view>
   </view>
   <image class="bg-img" src="/images/index-img.jpg"></image>
   <navigator class="login-btn" url="/pages/classify/classify">点击进入</navigator>

@@ -21,9 +21,12 @@
   background-color: rgb(95, 141, 240);
   font-size: 26rpx;
 }
-.item-back{
-  /* font-size: 24rpx;
-  font-family: fantasy; */
+.bg-color .item-back{
+  width: 540rpx;
+  height: 35rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .word-detail{
   font-size: 22rpx;
