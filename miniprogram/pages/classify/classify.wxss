@@ -24,7 +24,7 @@
   font-size: 26rpx;
   color: #fff;
   margin: 40rpx auto 0;
-  background-color: rgb(72, 126, 241);
-  border: 2rpx solid rgb(72, 126, 241);
+  background-color: rgb(95, 141, 240);
+  border: 2rpx solid rgb(95, 141, 240);
   border-radius: 30rpx;
 }
