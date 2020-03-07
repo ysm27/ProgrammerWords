@@ -5,15 +5,20 @@ Page({
   data: {
     classifyId: '',
     words: [],
-    develop: true
+    develop: false
   },
   onLoad: function (options) {
     let classifyId = options.id
     this.setData({ classifyId })
-  },
-  onShow: function() {
-    this.getWords()
     this.getClassifyName()
+    this.getWords()
+    wx.showLoading({
+      title: '玩命加载中～',
+      mask: true
+    })
+  },
+  onHide: function(){
+    innerAudioContext.stop()
   },
   // 获取分类名称
   getClassifyName: function() {
@@ -31,16 +36,21 @@ Page({
   },
   // 获取单词数据
   getWords: function() {
-    let classifyId = this.data.classifyId
-    db.collection('words').where({
-      classifyId: classifyId
-    }).get({
-      success: (res) => {
-        let words = res.data
+    let that = this
+    wx.cloud.callFunction({
+      name: 'getWords',
+      data: {},
+      success(res) {
+        let classifyId = that.data.classifyId
+        let wordsData = res.result.data
+        let words = wordsData.filter(data => {
+        return data.classifyId == classifyId
+        })
         words.forEach(data => {
           data.change = 'front'
         })
-        this.setData({ words })
+        that.setData({ words })
+        wx.hideLoading()
       }
     })
   },
@@ -53,15 +63,16 @@ Page({
     let wordId = e.currentTarget.dataset.id
     this.playVoice(wordId)
   },
-   // 播放录音
+   // 播放喇叭声音
    playVoice: function(wordId) {
-    db.collection('pronunciation').where({
-      wordId: wordId
+    db.collection('words').where({
+      _id: wordId
     }).get({
       success: (res) => {
-        let pronunciation = res.data
-        let recordId = pronunciation[0].recordId
-        innerAudioContext.src = recordId
+        let wordData = res.data
+        let word = wordData[0]
+        let wordName = word.name
+        innerAudioContext.src = 'http://dict.youdao.com/speech?audio='+wordName
         innerAudioContext.play()
       }
     })
@@ -71,7 +82,9 @@ Page({
     let index = e.currentTarget.dataset.index
     let words = this.data.words
     words[index].change = 'front'
-    this.setData({ words })
+    this.setData({ 
+      words
+    })
   },
   // 点击添加按钮
   handleAdd: function() {

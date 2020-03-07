@@ -1,7 +1,7 @@
 const db = wx.cloud.database()
 const App = getApp()
 const recorderManager = wx.getRecorderManager()
-const innerAudioContext = wx.createInnerAudioContext()
+var innerAudioContext = wx.createInnerAudioContext()
 
 Page({
   data: {
@@ -17,16 +17,24 @@ Page({
     openid: '',
     pronunciation: [],
     userInfo: '',
-    recordId: ''
+    recordId: '',
+    hornSrc: '/images/horn.png',
   },
   onLoad: function (options) {
     let wordId = options.id
     this.setData({ wordId })
+    this.getWord()
+    wx.showLoading({
+      title: '玩命加载中～',
+      mask: true
+    })
   },
   onShow: function() {
-    this.getWord()
     this.getPronunciation()
     this.getUserInfo()
+  },
+  onUnload: function() {
+    innerAudioContext.destroy()
   },
   getUserInfo: function() {
     let userInfo = App.globalData.userInfo
@@ -74,6 +82,7 @@ Page({
         wx.setNavigationBarTitle({
           title: word.name
         })
+        wx.hideLoading()
       }
     })
   },
@@ -85,6 +94,9 @@ Page({
     }).get({
       success: (res) => {
         let pronunciation = res.data
+        pronunciation.forEach(data => {
+          data.showPlay = false
+        })
         this.setData({ pronunciation })
       }
     })
@@ -105,6 +117,7 @@ Page({
       duration: 10000,
       sampleRate: 16000,
       numberOfChannels: 1,
+      format: 'mp3',
     }
     recorderManager.start(options)
     wx.showToast({
@@ -190,6 +203,7 @@ Page({
                 title: '录音成功',
                 icon: 'success'
               })
+              that.onShow()
             },
             fail: err => {
               wx.showToast({
@@ -212,13 +226,26 @@ Page({
       }
     })
   },
-  // 播放录音
-  playVoice: function(e) {
+  // 播放用户录音
+  playUserVoice: function(e) {
+    wx.setInnerAudioOption({
+      obeyMuteSwitch: false
+    })
+    innerAudioContext.destroy()
+    innerAudioContext = wx.createInnerAudioContext()
     let index = e.currentTarget.dataset.index
     let pronunciation = this.data.pronunciation
+    pronunciation[index].showPlay = true
+    this.setData({ pronunciation })
     let recordId = pronunciation[index].recordId
+    innerAudioContext.obeyMuteSwitch = true
+    innerAudioContext.autoplay = true
     innerAudioContext.src = recordId
     innerAudioContext.play()
+    innerAudioContext.onEnded(() => {
+      pronunciation[index].showPlay = false
+      this.setData({ pronunciation })
+    })
   },
   // 删除录音
   handleDelete: function(e) {
@@ -231,6 +258,32 @@ Page({
           icon: 'success'
         })
         that.onShow()
+      }
+    })
+  },
+  // 播放喇叭声音
+  playHornVoice: function(e) {
+    let that = this
+    that.setData({ 
+      hornSrc: '/images/horn_active.png'
+    })
+    let wordId = e.currentTarget.dataset.id
+    db.collection('words').where({
+      _id: wordId
+    }).get({
+      success: (res) => {
+        let wordData = res.data
+        let word = wordData[0]
+        let wordName = word.name
+        innerAudioContext.destroy()
+        innerAudioContext = wx.createInnerAudioContext()
+        innerAudioContext.src = 'http://dict.youdao.com/speech?audio=' + wordName
+        innerAudioContext.play()
+        innerAudioContext.onEnded(() => {
+          that.setData({ 
+            hornSrc: '/images/horn.png'
+          })
+        })
       }
     })
   }

@@ -7,3 +7,6 @@
   box-sizing: border-box;
   background-color: #fff;
 }
+view{
+  box-sizing: border-box;
+}

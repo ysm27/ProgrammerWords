@@ -10,13 +10,41 @@
   width: 210rpx;
   height: 210rpx;
   padding-top: 40rpx;
-  margin: 0 0 25rpx 25rpx;
+  margin: 0 0 40rpx 25rpx;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 32rpx;
   text-align: center;
-  border: 2rpx solid rgba(240, 244, 248, 0.932);
+  border: 2rpx solid rgba(240, 245, 250, 0.658);
   border-radius: 30rpx;
-  background-color: rgba(240, 244, 248, 0.932);
+  background-color: rgba(240, 245, 250, 0.658);
+  position: relative;
+  overflow: hidden;
+  z-index: 99;
+  box-shadow: 15rpx 15rpx 15rpx rgba(222, 232, 241, 0.979);
+}
+.classify-item::before{
+  content: '';
+  width: 100rpx;
+  height: 158rpx;
+  border-radius: 50%;
+  background-color: rgba(232, 244, 248, 0.884);
+  position: absolute;
+  top: -2rpx;
+  right: -63rpx;
+  z-index: -1;
+
+}
+.classify-item::after{
+  content: '';
+  width: 100rpx;
+  height: 165rpx;
+  border-radius: 50%;
+  background-color: rgba(232, 244, 248, 0.884);
+  position: absolute;
+  top: 71rpx;
+  left: -66rpx;
+  z-index: -1;
+
 }
 .add-btn{
   width: 67px;

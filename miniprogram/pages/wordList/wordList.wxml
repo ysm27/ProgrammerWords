@@ -1,14 +1,17 @@
 <view class="container">
+  <view class="word-number">共 {{ words.length}} 词</view>
   <view class="word-list">
     <view class="word-item" wx:for="{{ words }}" wx:key="index">
-      <view class="word-info" wx:if="{{ item.change === 'front' }}"  data-index="{{index}}" data-id="{{ item._id }}" bindtap="handleChange">
+      <view class="word-info" wx:if="{{ item.change === 'front' }}" data-index="{{index}}" data-id="{{ item._id }}" bindtap="handleChange">
         <view class="item-name">{{ item.name }}</view>
         <view class="item-pronunciation">{{ item.pronunciation }}</view>
       </view>
       <view class="word-info bg-color" wx:if="{{ item.change === 'end' }}" data-index="{{index}}" bindtap="handleBackFront">
         <view class="item-back">翻译：{{ item.translation }}</view>
         <view class="item-back">描述：{{ item.description }}</view>
-        <navigator class="word-detail" url="/pages/wordDetail/wordDetail?id={{ item._id }}">查看单词详情</navigator>
+        <navigator class="word-detail" url="/pages/wordDetail/wordDetail?id={{ item._id }}">
+          <image class="arrow" src="/images/arrow.png"></image>
+        </navigator>
       </view>
     </view>   
   </view>

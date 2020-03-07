@@ -30,8 +30,8 @@ Page({
       success: (res) => {
         let value = ''
         this.setData({ value })
-        wx.navigateTo({
-          url: '/pages/classify/classify',
+        wx.reLaunch({
+          url: '/pages/classify/classify'
         })
       },
       fail: err => {

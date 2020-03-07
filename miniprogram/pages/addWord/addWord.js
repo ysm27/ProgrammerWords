@@ -49,7 +49,7 @@ Page({
         name, pronunciation, translation, description, classifyId
       },
       success: (res) => {
-        wx.navigateTo({
+        wx.reLaunch({
           url: '/pages/wordList/wordList?id=' + classifyId,
         })
       },
