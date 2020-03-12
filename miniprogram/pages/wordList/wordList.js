@@ -16,6 +16,9 @@ Page({
       title: '玩命加载中～',
       mask: true
     })
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
   onHide: function(){
     innerAudioContext.stop()

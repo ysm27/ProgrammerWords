@@ -14,6 +14,9 @@ Page({
       title: '玩命加载中～',
       mask: true
     })
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
    // 获取分类
   getClassify: function() {

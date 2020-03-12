@@ -28,6 +28,7 @@ Page({
       title: '玩命加载中～',
       mask: true
     })
+    
   },
   onShow: function() {
     this.getPronunciation()
