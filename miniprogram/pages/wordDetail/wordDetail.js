@@ -228,13 +228,15 @@ Page({
   },
   // 播放用户录音
   playUserVoice: function(e) {
+    let pronunciation = this.data.pronunciation
+    pronunciation.forEach(data => data.showPlay = false)
+    this.setData({ pronunciation })
     wx.setInnerAudioOption({
       obeyMuteSwitch: false
     })
     innerAudioContext.destroy()
     innerAudioContext = wx.createInnerAudioContext()
     let index = e.currentTarget.dataset.index
-    let pronunciation = this.data.pronunciation
     pronunciation[index].showPlay = true
     this.setData({ pronunciation })
     let recordId = pronunciation[index].recordId
@@ -242,6 +244,10 @@ Page({
     innerAudioContext.autoplay = true
     innerAudioContext.src = recordId
     innerAudioContext.play()
+    innerAudioContext.onPause(() => {
+      pronunciation[index].showPlay = false
+      this.setData({ pronunciation })
+    })
     innerAudioContext.onEnded(() => {
       pronunciation[index].showPlay = false
       this.setData({ pronunciation })

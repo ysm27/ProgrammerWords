@@ -11,7 +11,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "程序员单词",
+    "navigationBarTitleText": "码农单词本",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

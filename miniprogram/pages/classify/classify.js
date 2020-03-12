@@ -7,7 +7,7 @@ Page({
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '程序员单词本'
+      title: '码农单词本'
     })
     this.getClassify()
     wx.showLoading({
