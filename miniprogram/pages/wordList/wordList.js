@@ -5,7 +5,7 @@ Page({
   data: {
     classifyId: '',
     words: [],
-    develop: false
+    develop: true
   },
   onLoad: function (options) {
     let classifyId = options.id
@@ -63,11 +63,10 @@ Page({
     let words = this.data.words
     words[index].change = 'end'
     this.setData({ words })
-    let wordId = e.currentTarget.dataset.id
-    this.playVoice(wordId)
   },
    // 播放喇叭声音
-   playVoice: function(wordId) {
+   playVoice: function(e) {
+    let wordId = e.currentTarget.dataset.id
     db.collection('words').where({
       _id: wordId
     }).get({

@@ -1,5 +1,5 @@
 .container{
-  height: 100%;
+  position: absolute;
 }
 .classify-list{
   margin-top: 50rpx;
@@ -47,12 +47,18 @@
 
 }
 .add-btn{
-  width: 67px;
-  height: 40rpx;
-  font-size: 26rpx;
-  color: #fff;
-  margin: 40rpx auto 0;
-  background-color: rgb(95, 141, 240);
-  border: 2rpx solid rgb(95, 141, 240);
-  border-radius: 30rpx;
+  text-align: center;
+  position: absolute;
+  bottom: 10%;
+
+}
+.add-img{
+  width: 100rpx;
+  height: 100rpx;
+}
+.add-text{
+  font-family: PingFangSC-Regular;
+  font-size: 10px;
+  color: #848484;
+  letter-spacing: 0;
 }

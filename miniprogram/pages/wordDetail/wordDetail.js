@@ -8,8 +8,7 @@ Page({
     wordId: '',
     word: '',
     record: {
-      text: '长按录音',
-      iconPath: '/images/record.png'
+      text: '长按录音'
     },
     startPoint: {},   // 记录长按录音开始点信息,用于后面计算滑动距离
     sendLock: true, //发送锁，当为true时上锁，false时解锁发送 
@@ -19,6 +18,7 @@ Page({
     userInfo: '',
     recordId: '',
     hornSrc: '/images/horn.png',
+    animationStatus: false
   },
   onLoad: function (options) {
     let wordId = options.id
@@ -28,7 +28,9 @@ Page({
       title: '玩命加载中～',
       mask: true
     })
-    
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
   onShow: function() {
     this.getPronunciation()
@@ -107,11 +109,10 @@ Page({
     let startPoint = e.touches[0] // 记录触摸点的坐标信息
     let sendLock = false
     let record = {
-      text: '松开发送',
-      iconPath: '/images/record_active.png'
+      text: '松开发送'
     }
     this.setData({ 
-      startPoint, sendLock, record
+      startPoint, sendLock, record, animationStatus:true
     })
     // 设置录音参数
     const options = {
@@ -143,7 +144,7 @@ Page({
         icon: "none",
         duration: 60000
       });
-      this.setData({ sendLock: false })
+      this.setData({ sendLock: false, animationStatus: false })
     }
   },
   // 上传文件
@@ -169,10 +170,9 @@ Page({
     let that = this
     let sendLock = that.data.sendLock
     let record = {
-      text: '长按录音',
-      iconPath: '/images/record.png'
+      text: '长按录音'
     }
-    that.setData({ record })
+    that.setData({ record, animationStatus: false })
     wx.hideToast()
     recorderManager.stop()
     recorderManager.onStop((res) => {
@@ -196,8 +196,7 @@ Page({
             },
             success: res => {
               let record = {
-                text: '长按录音',
-                iconPath: '/images/record.png'
+                text: '长按录音'
               }
               that.setData({ record })
               wx.showToast({
@@ -270,10 +269,6 @@ Page({
   },
   // 播放喇叭声音
   playHornVoice: function(e) {
-    let that = this
-    that.setData({ 
-      hornSrc: '/images/horn_active.png'
-    })
     let wordId = e.currentTarget.dataset.id
     db.collection('words').where({
       _id: wordId
@@ -286,11 +281,6 @@ Page({
         innerAudioContext = wx.createInnerAudioContext()
         innerAudioContext.src = 'http://dict.youdao.com/speech?audio=' + wordName
         innerAudioContext.play()
-        innerAudioContext.onEnded(() => {
-          that.setData({ 
-            hornSrc: '/images/horn.png'
-          })
-        })
       }
     })
   }

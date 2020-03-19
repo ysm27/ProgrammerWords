@@ -1,9 +1,9 @@
 <view class="container">
   <view class="classify-list">
     <navigator class="classify-item" wx:for="{{ classify }}" wx:key="index" url="/pages/wordList/wordList?id={{ item._id }}">{{ item.value }}</navigator>
-    <navigator wx:if="{{ develop }}" class="classify-item" url="/pages/addClassify/addClassify">
-    新生词本
-    <view class="add-btn">+ 创建</view>
-    </navigator>
   </view>
+    <navigator wx:if="{{ develop }}" class="add-btn" url="/pages/addClassify/addClassify">
+      <image class="add-img" src="/images/add-img.png"></image>
+      <view class="add-text">添加单词本</view>
+    </navigator>
 </view>

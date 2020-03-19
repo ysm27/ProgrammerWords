@@ -1,28 +1,30 @@
 <view class="container">
   <view class="word-info">
-    <view class="word-name">{{ word.name }}</view>
-    <view class="item">
-      <view class="word-pronunciation">{{ word.pronunciation }}</view>
-        <image class="horn" bindtap="playHornVoice" data-id="{{ word._id }}" src="{{ hornSrc }}"></image>
-      </view>
-    <view class="item">翻译：<view class="word-translation">{{ word.translation }}</view></view>
-    <view class="item">描述：<view class="word-description">{{ word.description }}</view> </view>  
+    <view class="word-name-container">
+      <view class="word-name">{{ word.name }}</view>
+      <image class="horn" bindtap="playHornVoice" data-id="{{ word._id }}" src="{{ hornSrc }}"></image>
+    </view>
+    <view class="item"><view class="word-pronunciation">{{ word.pronunciation }}</view></view>
+    <view class="item">释义：<view class="word-translation">{{ word.translation }}</view></view>
+    <view class="item description-container">描述：<view class="word-description">{{ word.description }}</view> </view>  
   </view> 
   <view class="record-container">
     <view class="pronunciation-list">
       <view class="pronunciation-item" wx:for="{{ pronunciation }}" wx:key="index">
-        <image class="user-avatar" src="{{ item.userInfo.avatarUrl }}"></image>
-        <view class="user-pronunciation" data-index="{{ index }}" bindtap="playUserVoice">
-          <view class="show-play">
-            <view class="box">
-              <view class="play-symbol">
-                <view class="play-circle first"></view>
-                <view class="play-circle second {{ item.showPlay ? 'second-move': ''}}"></view>
-                <view class="play-circle third {{ item.showPlay ? 'third-move': ''}}"></view>
+        <view class="pronunciation-item-container">
+          <image class="user-avatar" src="{{ item.userInfo.avatarUrl }}"></image>
+          <view class="user-pronunciation" data-index="{{ index }}" bindtap="playUserVoice">
+            <view class="show-play">
+              <view class="box">
+                <view class="play-symbol">
+                  <view class="play-circle first"></view>
+                  <view class="play-circle second {{ item.showPlay ? 'second-move': ''}}"></view>
+                  <view class="play-circle third {{ item.showPlay ? 'third-move': ''}}"></view>
+                </view>
               </view>
             </view>
+            <image class="delta" src="/images/delta.png"></image>
           </view>
-          <image class="delta" src="/images/delta.png"></image>
         </view>
         <image wx:if="{{ openid == item._openid }}" class="show-delete" bindtap="handleDelete" data-id="{{ item._id }}" src="/images/delete.png"></image>
       </view>
@@ -30,11 +32,14 @@
     <view class="record-icon">
     <!-- 授权登录 -->
      <button class="login-btn" hover-class="btn-hover-color" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{!userInfo.nickName}}">授权登录使用录音</button>
-      <button class="record" wx:if="{{userInfo.nickName}}" bindlongpress="startRecord" bindtouchmove="handleTouchMove" open-type="getUserInfo" bindtouchend="stopRecord">
-        <image class="record-img" src="{{ record.iconPath }}">
+      <view class="record" wx:if="{{userInfo.nickName}}" bindlongpress="startRecord" bindtouchmove="handleTouchMove" open-type="getUserInfo" bindtouchend="stopRecord">
+        <image class="record-img" src="/images/record.png">
         </image>
         <view class="record-text">{{ record.text }}</view>
-      </button>
+        <view class="ripple"></view>
+        <view class="ripple {{animationStatus?'rippleAnimation1':''}}"></view>
+        <view class="ripple {{animationStatus?'rippleAnimation2':''}}"></view>
+      </view>
     </view>
   </view>
   

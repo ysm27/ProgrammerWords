@@ -3,7 +3,7 @@ const db = wx.cloud.database()
 Page({
   data: {
     classify: [],
-    develop: false
+    develop: true
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({

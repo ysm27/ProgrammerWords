@@ -3,29 +3,41 @@
   height: 500rpx;
   padding: 60rpx 0 30rpx 80rpx;
 }
+.word-name-container{
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
 .word-name{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 60rpx;
-  margin-bottom: 4rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 30px;
+  color: #333333;
+  margin-right: 40rpx;
+  letter-spacing: 0;
 }
 .item{
   display: flex;
-  font-family: cursive;
-  font-size: 34rpx;
-  margin-bottom: 8rpx;
-}
-.word-pronunciation{
-  margin-bottom: 36rpx;
-  display: flex;
   align-items: center;
+  margin-bottom: 15rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: rgb(130, 130, 130);
+  letter-spacing: 0;
 }
 .horn{
-  width: 44rpx;
-  height: 47rpx;
-  margin-left: 20rpx;
+  width: 48rpx;
+  height: 43rpx;
 }
-.word-translation,.word-description{
-  font-size: 32rpx;
+.word-pronunciation{
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  letter-spacing: 0;
+  margin-bottom: 27rpx;
+}
+.description-container{
+  align-items: flex-start;
+  margin-bottom: 0;
+  padding-bottom: 20rpx;
 }
 .word-description{
   width: 480rpx;
@@ -35,16 +47,21 @@
 .record-container{
   width: 100%;
   border-top: 10rpx solid rgba(211, 210, 210, 0.301);
-  position: relative;
 }
 .pronunciation-list{
-  padding: 20rpx 0 0 80rpx;
+  padding: 20rpx 80rpx 0 80rpx;
   height: 450rpx;
   overflow: scroll;
 }
 .pronunciation-item{
   height: 70rpx;
   margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pronunciation-item-container{
+  height: 70rpx;
   display: flex;
   align-items: center;
 }
@@ -55,11 +72,11 @@
   margin-right: 45rpx;
 }
 .user-pronunciation{
-  width: 115rpx;
+  width: 140rpx;
   height: 48rpx;
-  background-color: rgb(146, 230, 73);
+  background-color: #8DD468;
   position: relative;
-  border-radius: 7rpx;
+  border-radius: 12rpx;
 }
 .show-play{
   width: 40rpx;
@@ -81,14 +98,14 @@
   transform: rotate(135deg);
 }
 .play-circle {
-  border: 5rpx solid #fff;
+  border: 5rpx solid #fff ;
   border-radius: 50%;
   position: absolute;
 }
 .first {
   width: 5rpx;
   height: 5rpx;
-  background: #fff;
+  background: #fff ;
   top: 45rpx;
   left: 45rpx;
 }
@@ -130,17 +147,6 @@
   height: 40rpx;
   margin-left: 40rpx;
 }
-.record-icon{
-  position: absolute;
-  bottom: -214rpx;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.record-icon .record{
-  background-color: #fff;
-  padding: 0;
-  margin: 0;
-}
 .record-icon .login-btn{
   height: 85rpx;
   color: #fff;
@@ -151,15 +157,64 @@
   padding: 0;
   margin: 0;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .record-img{
-  width: 145rpx;
-  height: 145rpx;
+  width: 120rpx;
+  height: 120rpx;
 }
 .record-text{
   text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #848484;
 }
-.img-container{
-  width: 70rpx;
-  overflow: hidden;
+.record-icon{
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60rpx;
+}
+.record{
+  width:120rpx;
+  height:120rpx;
+  background: rgb(188, 217, 232);
+  border-radius: 50%;
+  color:#fff;
+  position: relative;
+}
+.ripple{
+  position: absolute;
+  top:2rpx;
+  left:3rpx;
+  right:4rpx;
+  bottom:0;
+  border-radius: 50%;
+  border:4px solid rgba(206, 227, 238, 0.801);
+}
+.rippleAnimation1{
+  animation: ripple 1s infinite ease-in;
+} 
+.rippleAnimation2{
+  animation: ripple 1s infinite ease-in;
+  animation-delay:0.3s;
+} 
+@keyframes ripple{
+  from{
+    opacity: 1;
+    transform: scale(1,1)
+  }
+  to{
+    opacity: 0;
+    transform: scale(2,2)
+  }
 }

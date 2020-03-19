@@ -1,12 +1,6 @@
 .container{
+  height: 100%;
   box-sizing: border-box;
-}
-.word-number{
-  width: 100%;
-  border-bottom: 2rpx solid #F6F6F6;
-  display: flex;
-  align-items: center;
-  padding: 30rpx 30rpx;
 }
 .word-list{
   width: 100%;
@@ -16,7 +10,7 @@
   font-size: 30rpx;
   border-bottom: 2rpx solid #F6F6F6;
   width: 100%;
-  height: 120rpx;
+  height: 100rpx;
   display: flex;
   align-items: center;
   margin-bottom: 2rpx;
@@ -24,48 +18,99 @@
 }
 .word-info{
   width: 100%;
-  padding: c;
   position: relative;
   padding: 15rpx 20rpx 15rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.bg-color{
+.info-container{
+  display: flex;
+  align-items: center;
+}
+.item-index,.item-name{
+  font-family: PingFangSC-Medium;
+  font-size: 20px;
+  color: #4D4D4D;
+  margin-right: 20rpx;
+  letter-spacing: 0;
+  line-height: 22px;
+}
+.item-pronunciation{
+  font-family: PingFangSC-Semibold;
+  font-size: 14px;
+  color: rgb(130, 130, 130);
+  letter-spacing: 0;
+}
+.horn-container{
+  width: 100rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.horn{
+  width: 36rpx;
+  height: 36rpx;
+}
+.bg-color-container{
+  width: 100%;
   height: 120rpx;
+  padding: 15rpx 20rpx 15rpx 30rpx;
   color: #fff;
-  background-color: rgb(95, 141, 240);
-  animation: trunBack 2s ease;
+  background-color: rgb(163,183,203);
+  animation: trunBack 1s ease;
   font-size: 26rpx;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bg-color{
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 @keyframes trunBack{
   from {background-color: #fff;}
-  to {background-color: rgb(95, 141, 240);}
+  to {background-color: rgb(163,183,203);}
 }
-.bg-color .item-back{
+.item-back{
   width: 540rpx;
   height: 35rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.word-detail{
+.item-back text{
+  font-family: PingFangSC-Medium;
+  font-size: 26rpx;
+  color: rgb(240, 240, 240);
+  letter-spacing: 0;
+}
+.bg-detail{
   font-size: 24rpx;
   color: #fff;
-  position: absolute;
-  right: 50rpx;
-  top: 50%;
-  transform: translateY(-50%);  
-  width: 115rpx;
-  height: 100rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100rpx;
+  height: 80rpx;
 }
-.arrow{
-  width: 60rpx;
-  height: 60rpx;
+.detail{
+  width: 36rpx;
+  height: 36rpx;
 }
 .add-btn{
-  margin-top: 20rpx;
+  text-align: center;
+  margin: 50rpx 0 ;
+}
+.add-img{
+  width: 100rpx;
+  height: 100rpx;
+}
+.add-text{
+  font-family: PingFangSC-Regular;
+  font-size: 10px;
+  color: #848484;
+  letter-spacing: 0;
 }
