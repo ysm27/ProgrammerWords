@@ -1,9 +1,20 @@
 <view class="container">
   <view class="classify-list">
-    <navigator class="classify-item" wx:for="{{ classify }}" wx:key="index" url="/pages/wordList/wordList?id={{ item._id }}">{{ item.value }}</navigator>
+    <view class="classify-item {{ item.value }}" wx:for="{{ classify }}" wx:key="index">
+      <image class="bg-img" src="{{item.src}}">
+        <view class="item-value">
+          <view class="item-name">{{ item.value }}</view>
+          <view class="item-number">共 {{ item.words }} 个词</view>
+        </view>
+        <navigator class="arrow-container" url="/pages/wordList/wordList?id={{ item._id }}">
+          <image class="arrow" src="/images/arrow.png"></image>
+        </navigator>
+      </image>
+    </view>
   </view>
-    <navigator wx:if="{{ develop }}" class="add-btn" url="/pages/addClassify/addClassify">
-      <image class="add-img" src="/images/add-img.png"></image>
-      <view class="add-text">添加单词本</view>
-    </navigator>
+  <!-- 添加按钮 -->
+  <navigator wx:if="{{ develop }}" class="add-btn" url="/pages/addClassify/addClassify">
+    <image class="add-img" src="/images/add-img.png"></image>
+    <view class="add-text">添加单词本</view>
+  </navigator>
 </view>

@@ -105,7 +105,7 @@
   margin: 50rpx 0 ;
 }
 .add-img{
-  width: 100rpx;
+  width: 105rpx;
   height: 100rpx;
 }
 .add-text{

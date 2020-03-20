@@ -1,8 +1,10 @@
 <view class="container">
-  <view class="word-name">单词名称:</view>
-  <input class="word-input" placeholder="请输入单词名称" bindinput="handleName"></input>
-  <view class="word-detail">单词音标：<input class="word-desc" placeholder="请输入单词发音" bindinput="handlePronun"></input></view>
-  <view class="word-detail">单词翻译：<input class="word-desc" placeholder="请输入单词翻译" bindinput="handleTrans"></input></view>
-  <view class="word-detail">单词描述：<input class="word-desc" placeholder="请输入单词描述" bindinput="handleDesc"></input></view>
+  <view class="title">添加单词</view>
+  <view class="input-container">
+    <view class="word-detail">单词名称：<input class="word-desc" placeholder="请输入单词名称" bindinput="handleName"></input></view>
+    <view class="word-detail">单词音标：<input class="word-desc" placeholder="请输入单词发音" bindinput="handlePronun"></input></view>
+    <view class="word-detail">单词翻译：<input class="word-desc" placeholder="请输入单词翻译" bindinput="handleTrans"></input></view>
+    <view class="word-detail">单词描述：<input class="word-desc" placeholder="请输入单词描述" bindinput="handleDesc"></input></view>
+  </view>
   <button class="confirm-btn" type="primary" bindtap="handleSubmit">确定</button>
 </view>

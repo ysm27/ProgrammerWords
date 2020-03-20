@@ -3,7 +3,7 @@ const db = wx.cloud.database()
 Page({
   data: {
     classify: [],
-    develop: true
+    develop: false
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -23,6 +23,15 @@ Page({
     db.collection('classify').get({
       success: res => {
         let classify = res.data
+        classify[0].words = 28
+        classify[1].words = 68
+        classify[2].words = 52
+        classify[3].words = 31
+        classify[0].src = '/images/card_1.png'
+        classify[1].src = '/images/card_2.png'
+        classify[2].src = '/images/card_3.png'
+        classify[3].src = '/images/card_4.png'
+        console.log(classify)
         this.setData({ classify })
         wx.hideLoading()
       },

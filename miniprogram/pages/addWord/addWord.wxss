@@ -1,19 +1,13 @@
 .container{
-  background-color: rgba(211, 210, 210, 0.301);
+  height: 100vh;
 }
-.word-name{
-  width: 520rpx;
-  font-size: 40rpx;
-  margin: 150rpx 0 20rpx;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-.word-input{
-  width: 520rpx;
-  height: 35rpx;
-  border: 2rpx solid #727272;
-  border-radius: 30rpx;
-  margin-bottom: 80rpx;
-  padding: 20rpx;
+.title{
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #1F1F1F;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 200rpx 0 100rpx;
 }
 .word-detail{
   display: flex;
@@ -21,12 +15,12 @@
   margin-bottom: 30rpx;
 }
 .word-desc{
-  border: 2rpx solid #727272;
-  border-radius: 15rpx;
-  padding: 10rpx;
+  border: 2rpx solid #f6f6f6;
+  padding: 10rpx 16rpx;
+  background: #f6f6f6;
 }
 .container .confirm-btn{
   width: 550rpx;
-  border-radius: 30rpx;
   margin-top: 80rpx;
+  background: #627CD2;
 }

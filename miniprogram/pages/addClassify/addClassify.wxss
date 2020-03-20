@@ -1,26 +1,32 @@
 .container{
-  background-color: rgba(211, 210, 210, 0.301);
+  height: 100vh;
 }
-.container .language{
-  width: 748rpx;
-  height: 620rpx;
-  z-index: -1;
+.title{
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #1F1F1F;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 200rpx 0 100rpx;
 }
 .classify-name{
   width: 520rpx;
-  font-size: 40rpx;
   margin: 80rpx 0 20rpx;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 35rpx;
+  color: rgb(97, 97, 97);
+  letter-spacing: 0;
 }
 .classify-input{
   width: 520rpx;
   height: 35rpx;
-  border: 2rpx solid #727272;
-  border-radius: 30rpx;
   margin-bottom: 50rpx;
   padding: 20rpx;
+  background: #f6f6f6;
 }
 .container .confirm-btn{
-  width: 550rpx;
-  border-radius: 30rpx;
+  width: 562rpx;
+  background-color: #627CD2;
+  font-family: PingFangSC-Medium;
+  color: #FFFFFF;
+  letter-spacing: 2px;
 }
