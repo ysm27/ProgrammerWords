@@ -27,11 +27,12 @@ Page({
         classify[1].words = 68
         classify[2].words = 52
         classify[3].words = 31
+        classify[4].words = 41
         classify[0].src = '/images/card_1.png'
         classify[1].src = '/images/card_2.png'
         classify[2].src = '/images/card_3.png'
         classify[3].src = '/images/card_4.png'
-        console.log(classify)
+        classify[4].src = '/images/card_1.png'
         this.setData({ classify })
         wx.hideLoading()
       },

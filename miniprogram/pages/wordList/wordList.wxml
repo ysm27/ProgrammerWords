@@ -1,20 +1,20 @@
 <view class="container">
   <view class="word-list">
     <view class="word-item" wx:for="{{ words }}" wx:key="index">
-      <view class="word-info" wx:if="{{ item.change === 'front' }}" data-index="{{index}}" bindtap="handleChange">
+      <view class="word-info" wx:if="{{ item.change === 'front' }}" data-index="{{index}}" data-id="{{item._id}}" bindtap="handleChange">
         <view class="info-container">
           <view class="item-index">{{ index + 1 }}.</view>
           <view class="item-name">{{ item.name }}</view>
           <view class="item-pronunciation" >{{ item.pronunciation }}</view>
         </view>
-        <view class="horn-container" data-id="{{ item._id }}" catchtap="playVoice">
+        <view class="horn-container" catchtap="playVoice({{item._id}})">
           <image class="horn" src="/images/horn.png"></image>
         </view>
       </view>
       <view class="bg-color-container" wx:if="{{ item.change === 'end' }}" data-index="{{index}}" bindtap="handleBackFront">
         <view class="bg-color">
           <view class="item-back"><text>释义：</text> {{ item.translation }}</view>
-          <view class="item-back"><text>描述：</text> {{ item.description }}</view>
+          <view class="item-back" wx:if="{{ item.description != '' }}"><text>描述：</text> {{ item.description }}</view>
         </view>
         <navigator class="bg-detail" url="/pages/wordDetail/wordDetail?id={{ item._id }}">
           <image class="detail" src="/images/detail.png"></image>

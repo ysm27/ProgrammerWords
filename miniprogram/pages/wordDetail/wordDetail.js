@@ -17,7 +17,6 @@ Page({
     pronunciation: [],
     userInfo: '',
     recordId: '',
-    hornSrc: '/images/horn.png',
     animationStatus: false
   },
   onLoad: function (options) {

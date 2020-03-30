@@ -31,21 +31,6 @@
   color: #DDDDDD;
   letter-spacing: 0;
 }
-.arrow-container{
-  width: 100rpx;
-  height: 100rpx;
-  position: absolute;
-  top: 50%;
-  right: 30rpx;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.arrow{
-  width: 44rpx;
-  height: 44rpx;
-}
 .add-btn{
   text-align: center;
   margin: 50rpx 0;

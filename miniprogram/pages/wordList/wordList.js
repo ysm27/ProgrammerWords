@@ -60,13 +60,14 @@ Page({
   // 单击单词，使其翻转背面显示其他信息，同时发音
   handleChange: function(e) {
     let index = e.currentTarget.dataset.index
+    let wordId = e.currentTarget.dataset.id
     let words = this.data.words
     words[index].change = 'end'
     this.setData({ words })
+    this.playVoice(wordId)
   },
    // 播放喇叭声音
-   playVoice: function(e) {
-    let wordId = e.currentTarget.dataset.id
+   playVoice: function(wordId) {
     db.collection('words').where({
       _id: wordId
     }).get({
