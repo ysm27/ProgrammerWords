@@ -18,6 +18,8 @@ Page({
     // 上传分类名称
   handleSubmit: function() {
     let value = this.data.value
+    let length = 0
+    let src = ''
     if(!value || value == '') {
       wx.showToast({
         title: '请输入内容',
@@ -26,7 +28,7 @@ Page({
       return
     }
     db.collection('classify').add({
-      data: { value },
+      data: { value, length, src },
       success: (res) => {
         let value = ''
         this.setData({ value })

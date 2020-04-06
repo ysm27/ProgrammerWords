@@ -62,7 +62,7 @@ Page({
     let index = e.currentTarget.dataset.index
     let wordId = e.currentTarget.dataset.id
     let words = this.data.words
-    words[index].change = 'end'
+    words[index].change = 'back'
     this.setData({ words })
     this.playVoice(wordId)
   },

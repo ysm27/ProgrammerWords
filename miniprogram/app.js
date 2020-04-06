@@ -39,6 +39,13 @@ App({
   },
   globalData: {
     userInfo: {},
-    openid: ''
+    openid: '',
+    classify: {
+      html: {},
+      css: {},
+      javaScript: {},
+      vue: {},
+      common: {}
+    }
   }
 })

@@ -3,6 +3,9 @@ const db = wx.cloud.database()
 Page({
   data: {
     classify: [],
+    classifyId: [],
+    backgroundImages: ['/images/card_1.png', '/images/card_2.png', '/images/card_3.png', '/images/card_4.png'],
+    zIndex: 3,
     develop: false
   },
   onLoad: function (options) {
@@ -20,20 +23,17 @@ Page({
   },
    // 获取分类
   getClassify: function() {
+    let that = this
     db.collection('classify').get({
       success: res => {
         let classify = res.data
-        classify[0].words = 28
-        classify[1].words = 68
-        classify[2].words = 52
-        classify[3].words = 31
-        classify[4].words = 41
-        classify[0].src = '/images/card_1.png'
-        classify[1].src = '/images/card_2.png'
-        classify[2].src = '/images/card_3.png'
-        classify[3].src = '/images/card_4.png'
-        classify[4].src = '/images/card_1.png'
-        this.setData({ classify })
+        classify.forEach((item,index) => {
+          let zIndex = ++ that.data.zIndex
+          let backgroundImages = that.data.backgroundImages
+          let backgroundImage = backgroundImages[zIndex % backgroundImages.length];
+          item.src = `${backgroundImage}`
+        })
+        that.setData({ classify })
         wx.hideLoading()
       },
       fail: res => {

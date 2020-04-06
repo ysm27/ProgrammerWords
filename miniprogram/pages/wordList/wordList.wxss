@@ -15,7 +15,7 @@
   align-items: center;
   letter-spacing: 3rpx;
 }
-.word-info{
+.front-container{
   width: 100%;
   position: relative;
   padding-left: 30rpx;
@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.info-container{
+.front-info-container{
   display: flex;
   align-items: center;
 }

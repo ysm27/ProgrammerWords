@@ -4,7 +4,7 @@
       <image class="bg-img" src="{{item.src}}">
         <view class="item-value">
           <view class="item-name">{{ item.value }}</view>
-          <view class="item-number">共 {{ item.words }} 个词</view>
+          <view class="item-number">共 {{ item.length }} 个词</view>
         </view>
       </image>
     </navigator>

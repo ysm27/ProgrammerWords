@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/classify/classify",
+    "pages/index/index",
     "pages/wordList/wordList",
     "pages/addWord/addWord",
     "pages/addClassify/addClassify",
