@@ -5,7 +5,7 @@ Page({
   data: {
     classifyId: '',
     words: [],
-    develop: false
+    develop: true
   },
   onLoad: function (options) {
     let classifyId = options.id
@@ -49,8 +49,14 @@ Page({
         let words = wordsData.filter(data => {
         return data.classifyId == classifyId
         })
+        let length = words.length
         words.forEach(data => {
           data.change = 'front'
+        })
+        db.collection('classify').doc(classifyId).update({
+          data: {
+            length
+          }
         })
         that.setData({ words })
         wx.hideLoading()
@@ -64,10 +70,21 @@ Page({
     let words = this.data.words
     words[index].change = 'back'
     this.setData({ words })
-    this.playVoice(wordId)
+    db.collection('words').where({
+      _id: wordId
+    }).get({
+      success: (res) => {
+        let wordData = res.data
+        let word = wordData[0]
+        let wordName = word.name
+        innerAudioContext.src = 'http://dict.youdao.com/speech?audio='+wordName
+        innerAudioContext.play()
+      }
+    })
   },
    // 播放喇叭声音
-   playVoice: function(wordId) {
+   playVoice: function(e) {
+    let wordId = e.currentTarget.dataset.id
     db.collection('words').where({
       _id: wordId
     }).get({

@@ -17,11 +17,17 @@
 }
 .front-container{
   width: 100%;
+  height: 100rpx;
   position: relative;
   padding-left: 30rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation: trunFront 1s ease;
+}
+@keyframes trunFront{
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 .front-info-container{
   display: flex;
@@ -56,8 +62,8 @@
 }
 .bg-color-container{
   width: 100%;
-  height: 120rpx;
-  padding: 15rpx 0 0 30rpx;
+  height: 100rpx;
+  padding: 0 0 0 30rpx;
   background-color: rgb(163,183,203);
   animation: trunBack 1s ease;
   font-size: 24rpx;

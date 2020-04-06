@@ -7,7 +7,7 @@
           <view class="item-name">{{ item.name }}</view>
           <view class="item-pronunciation" >{{ item.pronunciation }}</view>
         </view>
-        <view class="horn-container" catchtap="playVoice({{item._id}})">
+        <view class="horn-container" catchtap="playVoice" data-id="{{item._id}}">
           <image class="horn" src="/images/horn.png"></image>
         </view>
       </view>

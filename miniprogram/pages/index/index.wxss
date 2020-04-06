@@ -1,29 +1,47 @@
-.title{
-  margin-top: 150rpx;
+.container{
+  height: 100%;
+}
+.classify-list{
+  margin-top: 30rpx;
+}
+.classify-item{
+  width: 690rpx;
+  height: 200rpx;
+  position: relative;
+}
+.bg-img{
+  width: 690rpx;
+  height: 200rpx;
+  z-index: -1;
+}
+.item-value{
+  position: absolute;
+  top: 28%;
+  left: 10%;
+}
+.item-name{
+  font-family: PingFangSC-Medium;
+  font-size: 22px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.item-number{
+  font-family: PingFangSC-Regular;
+  font-size: 13px;
+  color: #DDDDDD;
+  letter-spacing: 0;
+}
+.add-btn{
   text-align: center;
+  margin: 50rpx 0;
 }
-.main-title{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #504e4e;
-  font-size: 48rpx;
+.add-img{
+  width: 105rpx;
+  height: 100rpx;
 }
-.sub-title{
-  font-family: cursive;
-  color: #6d6b6b;
-  margin: 12rpx 0 20rpx 0;
-}
-.login-btn{
-  width: 350rpx;
-  height: 80rpx;
-  margin-top: 100rpx;
-  color: #fff;
-  border: 2rpx solid #4d90f3;
-  border-radius: 30rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #4d90f3;
-}
-.login-btn_hover{
-  opacity: .8;
+.add-text{
+  font-family: PingFangSC-Regular;
+  font-size: 10px;
+  color: #848484;
+  letter-spacing: 0;
 }

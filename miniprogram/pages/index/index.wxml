@@ -1,8 +1,17 @@
 <view class="container">
-  <view class="title">
-    <view class="main-title">码农单词本</view>
-    <view class="sub-title">专属于程序员的单词本</view>
+  <view class="classify-list">
+    <navigator class="classify-item {{ item.value }}" wx:for="{{ classify }}" wx:key="index" url="/pages/wordList/wordList?id={{ item._id }}">
+      <image class="bg-img" src="{{item.src}}">
+        <view class="item-value">
+          <view class="item-name">{{ item.value }}</view>
+          <view class="item-number">共 {{ item.length }} 个词</view>
+        </view>
+      </image>
+    </navigator>
   </view>
-  <image class="bg-img" src="/images/index-img.jpg"></image>
-  <navigator class="login-btn" url="/pages/classify/classify">点击进入</navigator>
+  <!-- 添加按钮 -->
+  <navigator wx:if="{{ develop }}" class="add-btn" url="/pages/addClassify/addClassify">
+    <image class="add-img" src="/images/add-img.png"></image>
+    <view class="add-text">添加单词本</view>
+  </navigator>
 </view>
