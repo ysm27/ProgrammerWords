@@ -5,7 +5,7 @@ Page({
   data: {
     classifyId: '',
     words: [],
-    develop: true
+    develop: false
   },
   onLoad: function (options) {
     let classifyId = options.id
